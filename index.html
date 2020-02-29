@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>LogIn</title>
+</head>
+<body>
+    <div id="login-area" class="text-center">
+        <h1>Welcome to Bank of LootPaat</h1>
+        <p  class="font-weight-bold">Makes us billionaires becoming to be ruined</p>
+        <div class="box-border-style text-left">
+            <input type="email" placeholder="E-mail" class="form-control"   name="" id=""><br>
+            <input type="password" placeholder="Password" class="form-control" name="" id=""><br>
+            <button id="login-btn" class="btn btn-success">Enter</button>
+        </div>
+    </div>    
+        
+    <div id="trans-area">
+        <h1 class="text-center m-5">Transaction</h1>
+        <div class="row text-left ">
+            <div class="col-md-4">
+                <div class="deposit common-style">
+                    <h5>Deposit</h5>
+                    <h2>Tk <span id="current-deposit-amount">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="withdraw common-style">
+                    <h5>Withdraw</h5>
+                    <h2>Tk <span id="withdraw-amount">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="balance common-style">
+                    <h5>Balance</h5>
+                    <h2>Tk <span id="balance-amount">00</span> </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="box-border-style">
+                    <h5>Deposit</h5>
+                    <input type="number" id="depositAmount" class="form-control" placeholder="Tk amount u want to deposit">
+                    <br>
+                    <div id="depositBtn" class="btn btn-success">Deposit</div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box-border-style">
+                    <h5>Withdraw</h5>
+                    <input type="number" id="withdrawAmount"  class="form-control" placeholder="Tk amount u want to withdraw">
+                    <br>
+                    <div id="withdrawBtn" class="btn btn-success">Withdraw</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+    
+    
+
+   
+
+    <script>
+        // const loginBtn=document.getElementById("login-btn");
+        // loginBtn.addEventListener("click",function () {
+        //     document.getElementById("login-area").style.display="none";
+        // })
+
+        //login enter btn event handler
+        document.getElementById("login-btn").addEventListener("click",function () {
+            document.getElementById("login-area").style.display="none";
+            document.getElementById("trans-area").style.display="block";
+        })
+
+
+
+        //deposit btn event handler 
+        document.getElementById("depositBtn").addEventListener("click",function () {
+            
+            const getCurrentAmountFloat = getAmount("depositAmount");
+
+            // const depositAmount =document.getElementById("depositAmount").value;//get value from input id depositAmount
+            // const depositAmountFloat=parseFloat(depositAmount);  //makes string to float
+
+            
+
+            updateSpanText("current-deposit-amount",getCurrentAmountFloat);
+
+            // const currentDepositAmount=document.getElementById("current-deposit-amount").innerText; //get text value from span id current-deposit-amount
+            // const currentDepositAmountFloat = parseFloat(currentDepositAmount);//makes strings to float
+            // const totalDeposit=depositAmountFloat+currentDepositAmountFloat; //add input deposit amount+previous deposit amount 
+
+            // document.getElementById("current-deposit-amount").innerText=totalDeposit; //assign total deposit in span id current-deposit-amount
+            document.getElementById("depositAmount").value=""; //removes input values after enter
+
+
+            updateSpanText("balance-amount",getCurrentAmountFloat);
+            // const balanceAmount = document.getElementById("balance-amount").innerText; //get value from span id balance-amount 
+            // const balanceAmountFloat = parseFloat(balanceAmount); //makes string to float
+            // const totalBalance = depositAmountFloat+balanceAmountFloat; //add input deposit amount+ current balance amount
+
+            // document.getElementById("balance-amount").innerText=totalBalance; //assigns total balance in span id  balance-amount
+
+
+        })
+
+
+        
+
+        //withdraw btn event handler
+        document.getElementById("withdrawBtn").addEventListener("click",function () {
+            
+           
+            const getCurrentAmountFloat = getAmount("withdrawAmount");
+            //     const withdrawAmount= document.getElementById("withdrawAmount").value; ;//get value from input id withdrawAmount
+            //    const withdrawAmountFloat=parseFloat(withdrawAmount);//makes string to float
+
+               updateSpanText("withdraw-amount",getCurrentAmountFloat);  
+            //    const currentWithdrawAmount= document.getElementById("withdraw-amount").innerText;//get text value from span id withdraw-amount
+            //    const currentWithdrawAmountFloat = parseFloat(currentWithdrawAmount);//makes strings to float
+
+            //    const totalWithdraw=getCurrentAmountFloat+currentWithdrawAmountFloat;//add input withdraw Amount+previous  withdraw Amount 
+
+
+            //    document.getElementById("withdraw-amount").innerText=totalWithdraw; //assign total Withdraw in span id withdraw-amount
+               document.getElementById("withdrawAmount").value="";//removes input values after enter
+
+
+           updateSpanText("balance-amount",-1*getCurrentAmountFloat);
+            //    const balanceAmount = document.getElementById("balance-amount").innerText; //get value from span id balance-amount 
+            //    const balanceAmountFloat = parseFloat(balanceAmount); //makes string to float
+            //    const totalBalance=balanceAmountFloat-withdrawAmountFloat; //subtract from current balance amount-current withdraw amount
+
+            //    document.getElementById("balance-amount").innerText=totalBalance;//shows total balance in span id  balance-amount
+
+
+        })
+
+
+        //convert input amount string to float
+        function getAmount(id) {
+            const amount =document.getElementById(id).value;//get value from input id 
+            const amountFloat=parseFloat(amount);  //makes string to float
+            return amountFloat;
+        }
+
+        //function for update span text
+        function updateSpanText(id,depositAmountFloat) {
+            const Amount = document.getElementById(id).innerText; //get value from span id 
+            const AmountFloat = parseFloat(Amount); //makes string to float
+            const total = depositAmountFloat+AmountFloat; //add input amount+ current amount
+
+            document.getElementById(id).innerText=total; //assigns total in span id  
+
+
+        }
+
+
+        
+
+    </script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</body>
+</html>

@@ -1,0 +1,51 @@
+.box-border-style{
+    box-shadow: 5px 5px 20px dimgray;
+            border-radius: 10px;;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            -ms-border-radius: 10px;
+            -o-border-radius: 10px;
+    margin: 20px 40px;
+    padding: 40px 20px;        
+}
+
+
+#trans-area{
+    display: none; 
+}
+.common-style{
+    color: #ffffff;
+    margin: 10px 30px;
+    padding: 10px 10px;
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    -ms-border-radius:10px;
+    -o-border-radius:10px;
+}
+
+.deposit{
+    background-color: slateblue;
+}
+
+
+.withdraw{
+    background-color: lightcoral;
+}
+
+.balance{
+    
+    background-color: darkolivegreen;
+}
+
+
+.box-style{
+    
+    padding: 10px 10px;
+    box-shadow: 5px 5px 20px dimgray;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
